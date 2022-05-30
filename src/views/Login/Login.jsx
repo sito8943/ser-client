@@ -10,6 +10,7 @@ const Login = () => {
   const [user, setUser] = useState("");
   const [pwd, setPwd] = useState("");
 
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -23,24 +24,30 @@ const Login = () => {
 
   const submit = async (e) => {
     e.preventDefault();
-    const response = await axios.post(
-      "http://localhost:8000/login",
-      {
-        user,
-        pwd,
-      },
-      {
-        getAuth,
-      }
-    );
-    const data = await response.data;
-    if (data.indexOf(user) > -1) {
-      const hashedUser = user;
-      // saving cookies
-      // user
-      sessionStorage.setItem("user", hashedUser);
-      // saving password
-      sessionStorage.setItem("pwd", pwd);
+    setError("");
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/login",
+        {
+          user,
+          pwd,
+        },
+        {
+          getAuth,
+        }
+      );
+      const data = await response.data;
+      if (data.indexOf(user) > -1) {
+        const hashedUser = user;
+        // saving cookies
+        // user
+        sessionStorage.setItem("user", hashedUser);
+        // saving password
+        sessionStorage.setItem("pwd", pwd);
+      } else setError(data);
+    } catch (e) {
+      console.log(e);
+      setError(String(e));
     }
   };
 
@@ -69,6 +76,12 @@ const Login = () => {
                 onChange={(e) => setPwd(e.target.value)}
               />
             </div>
+            {error !== "" && (
+              <div className="form-control">
+                <label className="error">{error}</label>
+              </div>
+            )}
+
             <div>
               <button type="submit">Entrar</button>
             </div>
