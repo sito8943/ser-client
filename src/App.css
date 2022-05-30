@@ -1,6 +1,25 @@
 .form-control {
   display: flex;
+  align-items: baseline;
   margin-top: 20px;
+}
+
+.form {
+  width: 500px;
+}
+
+select {
+  flex: 1;
+  width: 150px;
+  padding: 10px;
+  cursor: pointer;
+  margin-top: 10px;
+  border-radius: 1rem;
+  color: aliceblue;
+  background-color: #282c34;
+  border: 1px solid aliceblue;
+  transition: all 500ms ease;
+  font-weight: bold;
 }
 
 .error {
@@ -50,7 +69,8 @@ button:hover {
 }
 
 .form-control label {
-  width: 120px;
+  width: 150px;
+  margin-right: 20px;
 }
 
 .App {
@@ -58,7 +78,7 @@ button:hover {
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 20vmin;
   pointer-events: none;
 }
 
