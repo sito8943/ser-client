@@ -22,19 +22,11 @@ const Admin = () => {
   }, []);
 
   const init = async () => {
-    const user = sessionStorage.getItem("user");
-    const pwd = sessionStorage.getItem("pwd");
-    const response = await axios.post(
-      "http://localhost:8000/fetch",
-      {
-        user,
-        pwd,
-      },
-      {
-        getAuth,
-      }
-    );
+    const response = await axios.get("http://localhost:8000/admin/all", {
+      getAuth,
+    });
     const data = await response.data;
+    setDataTypes(data);
   };
 
   const submit = async (e) => {
@@ -63,6 +55,11 @@ const Admin = () => {
           <form id="login" onSubmit={submit}>
             <div className="form-control">
               <label>Data types</label>
+              <select>
+                {dataTypes.map((item, i) => (
+                  <option>{item}</option>
+                ))}
+              </select>
             </div>
             <div className="form-control">
               <label>Password</label>

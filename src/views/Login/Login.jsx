@@ -13,6 +13,8 @@ const Login = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
+  const [dataTypes, setDataTypes] = useState([]);
+
   useEffect(() => {
     if (
       sessionStorage.getItem("user") !== null &&
@@ -20,7 +22,7 @@ const Login = () => {
     ) {
       navigate("/admin");
     }
-  }, []);
+  });
 
   const submit = async (e) => {
     e.preventDefault();
