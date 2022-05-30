@@ -1,3 +1,49 @@
+.form-control {
+  display: flex;
+  margin-top: 20px;
+}
+
+.home {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.home a {
+  margin-right: 10px;
+  color: aliceblue;
+}
+
+button {
+  padding: 10px;
+  width: 100px;
+  cursor: pointer;
+  margin-top: 10px;
+  border-radius: 1rem;
+  color: aliceblue;
+  background-color: #282c34;
+  border: 1px solid aliceblue;
+  transition: all 500ms ease;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: aliceblue;
+  color: #282c34;
+}
+
+.form-control input {
+  border-radius: 1rem;
+  color: aliceblue;
+  background-color: #282c34;
+  border: 1px solid aliceblue;
+  padding: 10px;
+}
+
+.form-control label {
+  width: 120px;
+}
+
 .App {
   text-align: center;
 }
